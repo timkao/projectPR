@@ -1,35 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getTeam } from '../store';
 
 function Login (props) {
 
-    const { teams } = props;
+    const { teams, handleChange, handleSubmit, selectedTeam } = props;
 
     return (
-      <ul>
-        {
-          teams.map(team => {
-            return (
-              <li key={team.id}>{team.name}</li>
-            )
-          })
-        }
-      </ul>
+      <form onSubmit={handleSubmit}>
+        <select value={selectedTeam} onChange={handleChange}>
+          {
+            teams.map(team => {
+              return (
+                <option key={team.id} value={team.name}>{team.name}</option>
+              )
+            })
+          }
+        </select>
+      <input type="submit" value="Submit" />
+    </form>
     )
 
 }
 
 const mapStateToProps = function(state) {
   return {
-    teams: state.teams
+    teams: state.teams,
+    selectedTeam: state.team
   }
 }
 
-const mapDispatchToProps = function(dispatch) {
+const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(ev) {
-      console.log('check change ------------')
+      const action = getTeam(ev.target.value);
+      dispatch(action);
+    },
+
+    handleSubmit(ev) {
+      ev.preventDefault();
+      ownProps.history.push('/home');
     }
   }
 }

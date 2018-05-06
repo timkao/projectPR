@@ -16,7 +16,7 @@ export default class Main extends Component {
 		return (
 				<div className='container'>
           <Route exact path='/' component={Login}></Route>
-					<Route exact path='/home' component={Assessment}></Route>
+					<Route path='/home' component={Assessment}></Route>
 				</div>
 			)
 	}
