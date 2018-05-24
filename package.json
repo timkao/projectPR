@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "test": "mocha",
+    "test": "jest",
     "start:dev": "npm run webpack -- -w & nodemon --ignore /dist server.js"
   },
   "author": "",
@@ -20,17 +20,23 @@
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.1",
     "express": "^4.16.3",
+    "jest": "^22.4.4",
     "pg": "^7.4.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.4.0",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.37.6",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14"
+  },
+  "devDependencies": {
+    "babel-jest": "^22.4.4",
+    "babel-preset-env": "^1.7.0"
   }
 }
