@@ -10,7 +10,7 @@ const seed = () => {
     Team.create({name: 'Suicide Squad', description: 'where is Logan?'})
   ])
   .then(() => {
-    console.log('seeded!');
+    console.log('postgres seeded!');
   })
 }
 
