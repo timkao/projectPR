@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-
 const path = require('path');
 
-// setup database
-const db = require('./db');
-const seed = require('./db/seed');
+// setup postgres database
+// const db = require('./db');
+// const seed = require('./db/seed');
 
-const apiRoute = require('./server');
+// setup mongo database
+const mongoDb = require('./mongo');
+
+
 
 // fetch files locally
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
@@ -23,11 +25,21 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 })
 
-// start the app
-db.sync()
-  .then(seed)
-  .then(() => {
+// start the app with postgres database
+// db.sync()
+//   .then(seed)
+//   .then(() => {
+//     app.listen(port, () => {
+//       console.log(`listening on port ${port}`);
+//     })
+//   })
+
+// start the app with mongo database
+
+
+mongoDb.conn
+  .then( db => {
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
-    })
+    });
   })
