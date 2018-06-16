@@ -18,6 +18,9 @@ const seed = () => {
   .then( arr => {
     console.log('Mongodb seeded!');
   })
+  .catch(err => {
+    console.log(err);
+  })
 }
 
 module.exports = seed;
